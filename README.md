@@ -1,0 +1,2 @@
+# AI-Based-Stock-Price-Prediction-and-Investment-Decision-Support-System
+This project presents an AI-based stock price prediction system designed to assist users in making informed investment decisions. The system utilizes historical stock data and applies machine learning techniques to forecast future prices. A Linear Regression model is trained on preprocessed and normalized data to generate predictions.
