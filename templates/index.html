@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Predictor</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb, #ebedee);
+            color: #2d2d2d;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            background: linear-gradient(90deg, #a18cd1, #fbc2eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+        }
+
+        input {
+            padding: 10px;
+            width: 90%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #a1c4fd, #c2e9fb);
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .result {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+        }
+
+        img {
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📈 Stock Predictor</h1>
+
+    <!-- ✅ SINGLE CLEAN FORM -->
+    <div class="box">
+        <form action="/predict" method="post">
+
+            <input type="text" name="stock" placeholder="Stock Name (AAPL)" required>
+
+            <input type="number" name="investment" placeholder="Investment Amount (₹)" required>
+
+            <input type="number" name="days" placeholder="Days (e.g. 5)" required>
+
+            <button type="submit">Predict</button>
+
+        </form>
+    </div>
+
+    <!-- ✅ RESULTS -->
+    {% if prediction %}
+<div class="result">
+
+    <h2>{{ stock }}</h2>
+
+    <p><b>Current Price:</b> ₹{{ last_price }}</p>
+    <p><b>Predicted Price ({{ days }} days):</b> ₹{{ prediction }}</p>
+    <p><b>Estimated Profit:</b> ₹{{ profit }}</p>
+
+    <h3>{{ advice }}</h3>
+    <p>{{ reason }}</p>
+
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
