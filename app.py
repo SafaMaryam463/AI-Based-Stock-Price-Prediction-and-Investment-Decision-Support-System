@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import pandas as pd
 import joblib
 import numpy as np
-
+import yfinance as yf
 # ---------------- INIT ----------------
 app = Flask(__name__)
 
@@ -35,7 +35,8 @@ def predict():
         days = int(request.form['days'])
 
         # ---------------- LOAD DATA ----------------
-        df = pd.read_csv(f"stocks/{stock}.csv")
+        df = yf.download(stock, period="1y")
+        df = df.reset_index()
 
         data = df[['Close']].values
         scaled_data = scaler.transform(data)
